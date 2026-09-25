@@ -101,6 +101,14 @@ func (c *clientListener) NewBlockAvailable(htnApi *HtnApi, soloMining bool, poll
 		return
 	}
 
+	if mineWhenNotSynced && !htnApi.IsSynced() {
+		if time.Since(c.lastNotSyncedLog) > 30*time.Second {
+			c.logger.Warn("HTN is not synced; when_not_synced is current DISABLED, please wait")
+			c.lastNotSyncedLog = time.Now()
+		}
+		return
+	}
+
 	c.clientLock.Lock()
 	addresses := make([]string, 0, len(c.clients))
 	for _, cl := range c.clients {
