@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/HoosatNetwork/HTND/app/appmessage"
+	"github.com/HoosatNetwork/HTND/v2/app/appmessage"
 	"github.com/HoosatNetwork/htn-stratum-bridge/src/gostratum"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
